@@ -53,6 +53,10 @@ export class LiveClient extends AbstractWsClient {
         if (data.type === LiveTranscriptionEvents.Transcript) {
           this.emit(LiveTranscriptionEvents.Transcript, data as LiveTranscriptionEvent);
         }
+
+        if (data.type === LiveTranscriptionEvents.UtteranceEnd) {
+          this.emit(LiveTranscriptionEvents.UtteranceEnd, event);
+        }
       } catch (error) {
         this.emit(LiveTranscriptionEvents.Error, {
           event,
